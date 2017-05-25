@@ -4,16 +4,24 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebPortal.Models;
+using System.Data.Entity;
 
 namespace WebPortal.Content.uploads
 {
     public class UploadMaterijalController : Controller
     {
-        // GET: UploadMaterijal
-        //public ActionResult UploadMaterijalView()
-        //{
-        //    return View();
-        //}
+        private ApplicationDbContext _context;
+
+        public UploadMaterijalController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
 
         [HttpGet]
         public ActionResult UploadMaterijal()
@@ -28,12 +36,18 @@ namespace WebPortal.Content.uploads
             {
                 if (file.ContentLength > 0)
                 {
-                    string _FileName = Path.GetFileName(file.FileName);
-                    string _path = Path.Combine(Server.MapPath ("~/Content/uploads"), _FileName);
-                    file.SaveAs(_path);
+                    MaterijalModel materijal = new MaterijalModel();
+                    string nazivFajla = Path.GetFileName(file.FileName);
+                    string putanjaFajla = Path.Combine(Server.MapPath("~/Content/uploads"), nazivFajla);
+                    file.SaveAs(putanjaFajla);
+                    materijal.materijalNaziv = nazivFajla;
+                    materijal.materijalTip = Path.GetExtension(putanjaFajla);
+                    materijal.materijalUrl = putanjaFajla;
+                    _context.Materijal.Add(materijal);
+                    _context.SaveChanges();
                 }
                 ViewBag.Message = "Uspešno ste postavili materijal!";
-                return View(); 
+                return View();
             }
             catch
             {
