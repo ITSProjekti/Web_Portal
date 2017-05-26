@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebPortal.Models;
+using WebPortal.ViewModels;
 using System.Data.Entity;
 
 namespace WebPortal.Content.uploads
@@ -24,10 +25,26 @@ namespace WebPortal.Content.uploads
         }
 
         [HttpGet]
+        public ActionResult MaterijaliPrikaz()
+        {
+            var materijali = _context.Materijal.ToList();
+            MaterijalViewModel ViewModel = new MaterijalViewModel
+            {
+                mater = materijali
+            };
+
+            return View(ViewModel);
+        }
+
+
+        [HttpGet]
         public ActionResult UploadMaterijal()
         {
+            //var materijali = _context.Materijal.ToList();
+
             return View();
         }
+        
 
         [HttpPost]
         public ActionResult UploadMaterijal(HttpPostedFileBase file)
@@ -36,6 +53,7 @@ namespace WebPortal.Content.uploads
             {
                 if (file.ContentLength > 0)
                 {
+
                     MaterijalModel materijal = new MaterijalModel();
                     string nazivFajla = Path.GetFileName(file.FileName);
                     string putanjaFajla = Path.Combine(Server.MapPath("~/Content/uploads"), nazivFajla);

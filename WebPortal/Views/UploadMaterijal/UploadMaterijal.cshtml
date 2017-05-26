@@ -1,4 +1,4 @@
-﻿
+﻿@model WebPortal.ViewModels.MaterijalViewModel
 @{
     ViewBag.Title = "UploadMaterijal";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -14,11 +14,15 @@
     <div>
         @Html.TextBox("file", "", new { type = "file" }) <br />
 
-        <input type="submit" value="Upload" />
+        <input type="submit" value="Postavi materijal" />
         @ViewBag.Message
-
+        <br />
     </div>
-
-
 }
+<br />
+@Html.ActionLink("Vidi sve materijale-->", "MaterijaliPrikaz")
+
+
+
+
 
