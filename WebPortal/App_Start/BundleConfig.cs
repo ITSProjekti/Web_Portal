@@ -24,12 +24,8 @@ namespace WebPortal
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      //"~/Content/bootstrap.css",
-                      "~/Content/css/reset.css",
-                      "~/Content/css/bootstrap-flatly.css",
-                      "~/Content/css/site.css",
-                      "~/Content/css/izgled.css"
-                      ));
+                      "~/Content/bootstrap.css",
+                      "~/Content/site.css"));
         }
     }
 }
