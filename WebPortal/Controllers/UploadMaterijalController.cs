@@ -24,17 +24,20 @@ namespace WebPortal.Content.uploads
             _context.Dispose();
         }
 
-        [HttpGet]
-        public ActionResult MaterijaliPrikaz()
-        {
-            var materijali = _context.Materijal.ToList();
-            MaterijalViewModel ViewModel = new MaterijalViewModel
-            {
-                mater = materijali
-            };
+        // TODO:
 
-            return View(ViewModel);
-        }
+
+        //[HttpGet]
+        //public ActionResult MaterijaliPrikaz()
+        //{
+        //    var materijali = _context.Materijal.ToList();
+        //    MaterijalViewModel ViewModel = new MaterijalViewModel
+        //    {
+        //        mater = materijali
+        //    };
+
+        //    return View(ViewModel);
+        //}
 
 
         [HttpGet]
@@ -44,34 +47,32 @@ namespace WebPortal.Content.uploads
 
             return View();
         }
-        
+
 
         [HttpPost]
-        public ActionResult UploadMaterijal(HttpPostedFileBase file)
+        public ActionResult UploadMaterijal([Bind(Include = "Title, File")] MaterijalViewModel fileModel)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (file.ContentLength > 0)
-                {
+                var fileData = new MemoryStream();
+                fileModel.File.InputStream.CopyTo(fileData);
 
-                    MaterijalModel materijal = new MaterijalModel();
-                    string nazivFajla = Path.GetFileName(file.FileName);
-                    string putanjaFajla = Path.Combine(Server.MapPath("~/Content/uploads"), nazivFajla);
-                    file.SaveAs(putanjaFajla);
-                    materijal.materijalNaziv = nazivFajla;
-                    materijal.materijalTip = Path.GetExtension(putanjaFajla);
-                    materijal.materijalUrl = putanjaFajla;
-                    _context.Materijal.Add(materijal);
-                    _context.SaveChanges();
-                }
-                ViewBag.Message = "Uspešno ste postavili materijal!";
-                return View();
+
+                string nazivFajla = Path.GetFileName(fileModel.File.FileName);
+                string tipFajla = Path.GetExtension(fileModel.File.FileName);
+
+                var file = new MaterijalModel { materijalNaziv = nazivFajla, materijalTip = tipFajla, materijalFile = fileData.ToArray() };
+                _context.Materijal.Add(file);
+
+                _context.SaveChanges();
+
+                return RedirectToAction("UploadMaterijal");
             }
-            catch
-            {
-                ViewBag.Message = "Postavljanje materijala nije uspelo!";
-                return View();
-            }
+            return View(fileModel);
+
+
+
+
         }
     }
 }

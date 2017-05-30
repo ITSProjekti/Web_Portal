@@ -210,6 +210,18 @@
     <Compile Include="Migrations\201705241341293_MaterijalModelMigration.Designer.cs">
       <DependentUpon>201705241341293_MaterijalModelMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705291142592_PromenaMaterijalModela.cs" />
+    <Compile Include="Migrations\201705291142592_PromenaMaterijalModela.Designer.cs">
+      <DependentUpon>201705291142592_PromenaMaterijalModela.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705291153039_PromenaMaterijalModelaPart2.cs" />
+    <Compile Include="Migrations\201705291153039_PromenaMaterijalModelaPart2.Designer.cs">
+      <DependentUpon>201705291153039_PromenaMaterijalModelaPart2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705291211565_MaterijalPromenaPart3.cs" />
+    <Compile Include="Migrations\201705291211565_MaterijalPromenaPart3.Designer.cs">
+      <DependentUpon>201705291211565_MaterijalPromenaPart3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -302,6 +314,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705241341293_MaterijalModelMigration.resx">
       <DependentUpon>201705241341293_MaterijalModelMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705291142592_PromenaMaterijalModela.resx">
+      <DependentUpon>201705291142592_PromenaMaterijalModela.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705291153039_PromenaMaterijalModelaPart2.resx">
+      <DependentUpon>201705291153039_PromenaMaterijalModelaPart2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705291211565_MaterijalPromenaPart3.resx">
+      <DependentUpon>201705291211565_MaterijalPromenaPart3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
