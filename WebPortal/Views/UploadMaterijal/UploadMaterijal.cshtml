@@ -1,28 +1,64 @@
 ﻿@model WebPortal.ViewModels.MaterijalViewModel
 @{
-    ViewBag.Title = "UploadMaterijal";
+    //ViewBag.Title = "UploadMaterijal";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>UploadMaterijalView</h2>
+<h2>Postavljanje materijala</h2>
 
+<style>
+    .file {
+  visibility: hidden;
+  position: absolute;
+}
 
+</style>
 
 @using (Html.BeginForm("UploadMaterijal", "UploadMaterijal", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 
-    <div>
+    
+        
         @Html.TextBox("file", "", new { type = "file" }) <br />
+        <img src="../../../../../upload.png" alt="4Head" />
+        @*<div class="form-group">
+            <input type="file" name="img[]" class="file">
+            <div class="input-group col-xs-12">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
+                <input type="text" class="form-control input-lg" disabled placeholder="Naziv materijala">
+                <span class="input-group-btn">
+                <button class="browse btn btn-primary input-lg" type="button" id="file"><i class="glyphicon glyphicon-search"></i>  Izaberi materijal</button>
+                    
+                    <br />
+                </span>
 
+        </div>*@
+            
+        @*</div>*@
         <input type="submit" value="Postavi materijal" />
         @ViewBag.Message
         <br />
-    </div>
+
+
 }
 <br />
-@Html.ActionLink("Vidi sve materijale-->", "MaterijaliPrikaz")
-
-
-
-
-
+@Html.ActionLink("Vidi sve materijale-->", "Downloads", "Download")
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".browse").on('click', function () {
+            var file = $(this).parent().parent().parent().find('.file');
+            file.trigger('click');
+        });
+        $(".file").on('change', function () {
+            $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
+        });
+    });
+    //$(document).on('click', '.browse', function () {
+    //    var file = $(this).parent().parent().parent().find('.file');
+    //    file.trigger('click');
+    //});
+    //$(document).on('change', '.file', function () {
+    //    $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
+    //});
+</script>

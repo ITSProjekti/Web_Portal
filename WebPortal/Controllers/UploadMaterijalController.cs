@@ -24,20 +24,32 @@ namespace WebPortal.Content.uploads
             _context.Dispose();
         }
 
-        // TODO:
+        [HttpGet]
+        public ActionResult Download(int id)
+        {
+            var file = _context.Materijal.SingleOrDefault(c => c.materijalId == id);
+            var cd = new System.Net.Mime.ContentDisposition
+            {
+                FileName = file.materijalNaziv,
+                Inline = false,
 
+            };
 
-        //[HttpGet]
-        //public ActionResult MaterijaliPrikaz()
-        //{
-        //    var materijali = _context.Materijal.ToList();
-        //    MaterijalViewModel ViewModel = new MaterijalViewModel
-        //    {
-        //        mater = materijali
-        //    };
+            Response.AppendHeader("Content-Disposition", cd.ToString());
+            return File(file.materijalNaziv, file.materijalTip);
+        }
+        
+        [HttpGet]
+        public ActionResult MaterijaliPrikaz()
+        {
+            var materijali = _context.Materijal.ToList();
+            MaterijalViewModel ViewModel = new MaterijalViewModel
+            {
+                materijaliLista = materijali
+            };
 
-        //    return View(ViewModel);
-        //}
+            return View(ViewModel);
+        }
 
 
         [HttpGet]
@@ -48,31 +60,53 @@ namespace WebPortal.Content.uploads
             return View();
         }
 
-
         [HttpPost]
-        public ActionResult UploadMaterijal([Bind(Include = "Title, File")] MaterijalViewModel fileModel)
+        public ActionResult UploadMaterijal(HttpPostedFileBase file)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var fileData = new MemoryStream();
-                fileModel.File.InputStream.CopyTo(fileData);
-
-
-                string nazivFajla = Path.GetFileName(fileModel.File.FileName);
-                string tipFajla = Path.GetExtension(fileModel.File.FileName);
-
-                var file = new MaterijalModel { materijalNaziv = nazivFajla, materijalTip = tipFajla, materijalFile = fileData.ToArray() };
-                _context.Materijal.Add(file);
-
-                _context.SaveChanges();
-
-                return RedirectToAction("UploadMaterijal");
+                if (file.ContentLength > 0)
+                {
+                    MaterijalModel materijal = new MaterijalModel();
+                    string nazivFajla = Path.GetFileName(file.FileName);
+                    string putanjaFajla = Path.Combine(Server.MapPath("~/Content/uploads"), nazivFajla);
+                    file.SaveAs(putanjaFajla);
+                    materijal.materijalNaziv = nazivFajla;
+                    materijal.materijalTip = Path.GetExtension(putanjaFajla);
+                    materijal.materijalUrl = putanjaFajla;
+                    _context.Materijal.Add(materijal);
+                    _context.SaveChanges();
+                }
+                ViewBag.Message = "Uspešno ste postavili materijal!";
+                return View();
             }
-            return View(fileModel);
-
-
-
-
+            catch
+            {
+                ViewBag.Message = "Postavljanje materijala nije uspelo!";
+                return View();
+            }
         }
+
+        //[HttpPost]
+        //public ActionResult UploadMaterijal([Bind(Include = "Title, File")] MaterijalViewModel fileModel)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var fileData = new MemoryStream();
+        //        fileModel.File.InputStream.CopyTo(fileData);
+
+        //        string nazivFajla = Path.GetFileName(fileModel.File.FileName);
+        //        string tipFajla = Path.GetExtension(fileModel.File.FileName);
+
+        //        var file = new MaterijalModel { materijalNaziv = nazivFajla, materijalTip = tipFajla, materijalFile = fileData.ToArray() };
+        //        _context.Materijal.Add(file);
+
+        //        _context.SaveChanges();
+
+        //        return RedirectToAction("UploadMaterijal");
+        //    }
+        //    return View(fileModel);
+        //}
+
     }
 }

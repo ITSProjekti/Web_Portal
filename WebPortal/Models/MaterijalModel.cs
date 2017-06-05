@@ -13,8 +13,8 @@ namespace WebPortal.Models
 
         [Key]
        public int materijalId { get; set; }
-        [Required]
-        public byte[] materijalFile { get; set; }
+        //[Required]
+        //public byte[] materijalFile { get; set; }
         public string materijalUrl { get; set; }
        
         public string materijalTip { get; set; }
