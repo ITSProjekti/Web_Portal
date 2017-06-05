@@ -195,6 +195,8 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\DownloadController.cs" />
+    <Compile Include="Controllers\MaterijalModelsController.cs" />
     <Compile Include="Controllers\UploadMaterijalController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -221,6 +223,10 @@
     <Compile Include="Migrations\201705291211565_MaterijalPromenaPart3.cs" />
     <Compile Include="Migrations\201705291211565_MaterijalPromenaPart3.Designer.cs">
       <DependentUpon>201705291211565_MaterijalPromenaPart3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706020835092_VracanjeNaPET.cs" />
+    <Compile Include="Migrations\201706020835092_VracanjeNaPET.Designer.cs">
+      <DependentUpon>201706020835092_VracanjeNaPET.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -295,6 +301,12 @@
     <Content Include="Views\AdminHome.cshtml" />
     <Content Include="Views\UploadMaterijal\UploadMaterijal.cshtml" />
     <Content Include="Views\UploadMaterijal\MaterijaliPrikaz.cshtml" />
+    <Content Include="Views\MaterijalModels\Create.cshtml" />
+    <Content Include="Views\MaterijalModels\Delete.cshtml" />
+    <Content Include="Views\MaterijalModels\Details.cshtml" />
+    <Content Include="Views\MaterijalModels\Edit.cshtml" />
+    <Content Include="Views\MaterijalModels\Index.cshtml" />
+    <Content Include="Views\Download\Downloads.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -323,6 +335,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705291211565_MaterijalPromenaPart3.resx">
       <DependentUpon>201705291211565_MaterijalPromenaPart3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706020835092_VracanjeNaPET.resx">
+      <DependentUpon>201706020835092_VracanjeNaPET.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

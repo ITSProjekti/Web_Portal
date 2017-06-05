@@ -10,9 +10,9 @@ namespace WebPortal.ViewModels
 {
     public class MaterijalViewModel
     {
-        //public IEnumerable<MaterijalModel> mater { get; set; }
+        public IEnumerable<MaterijalModel> materijaliLista { get; set; }
 
-        public string materijalNaziv { get; set; }
-        public HttpPostedFileBase File { get; set; }
+        //public string materijalNaziv { get; set; }
+        //public HttpPostedFileBase File { get; set; }
     }
 }
