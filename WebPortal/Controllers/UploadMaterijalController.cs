@@ -24,59 +24,63 @@ namespace WebPortal.Content.uploads
             _context.Dispose();
         }
 
-        [HttpGet]
-        public ActionResult Download(int id)
-        {
-            var file = _context.Materijal.SingleOrDefault(c => c.materijalId == id);
-            var cd = new System.Net.Mime.ContentDisposition
-            {
-                FileName = file.materijalNaziv,
-                Inline = false,
+        //[HttpGet]
+        //public ActionResult Download(int id)
+        //{
+        //    var file = _context.Materijal.SingleOrDefault(c => c.materijalId == id);
+        //    var cd = new System.Net.Mime.ContentDisposition
+        //    {
+        //        FileName = file.materijalNaziv,
+        //        Inline = false,
 
-            };
+        //    };
 
-            Response.AppendHeader("Content-Disposition", cd.ToString());
-            return File(file.materijalNaziv, file.materijalTip);
-        }
-        
-        [HttpGet]
-        public ActionResult MaterijaliPrikaz()
-        {
-            var materijali = _context.Materijal.ToList();
-            MaterijalViewModel ViewModel = new MaterijalViewModel
-            {
-                materijaliLista = materijali
-            };
+        //    Response.AppendHeader("Content-Disposition", cd.ToString());
+        //    return File(file.materijalNaziv, file.materijalTip);
+        //}
 
-            return View(ViewModel);
-        }
+        //[HttpGet]
+        //public ActionResult MaterijaliPrikaz()
+        //{
+        //    var materijali = _context.Materijal.ToList();
+        //    MaterijalViewModel ViewModel = new MaterijalViewModel
+        //    {
+        //        materijaliLista = materijali
+        //    };
+
+        //    return View(ViewModel);
+        //}
 
 
         [HttpGet]
         public ActionResult UploadMaterijal()
         {
+
             //var materijali = _context.Materijal.ToList();
 
             return View();
         }
 
         [HttpPost]
-        public ActionResult UploadMaterijal(HttpPostedFileBase file)
+        public ActionResult UploadMaterijal(MaterijalModel materijal, HttpPostedFileBase file)
         {
             try
             {
-                if (file.ContentLength > 0)
+                if (ModelState.IsValid)
                 {
-                    MaterijalModel materijal = new MaterijalModel();
+
                     string nazivFajla = Path.GetFileName(file.FileName);
-                    string putanjaFajla = Path.Combine(Server.MapPath("~/Content/uploads"), nazivFajla);
-                    file.SaveAs(putanjaFajla);
+
+                    materijal.fileMimeType = file.ContentType;
+                    materijal.materijalFile = new byte[file.ContentLength];
+                    file.InputStream.Read(materijal.materijalFile, 0, file.ContentLength);
                     materijal.materijalNaziv = nazivFajla;
-                    materijal.materijalTip = Path.GetExtension(putanjaFajla);
-                    materijal.materijalUrl = putanjaFajla;
+                    materijal.materijalEkstenzija = Path.GetExtension(nazivFajla);
+
                     _context.Materijal.Add(materijal);
                     _context.SaveChanges();
                 }
+
                 ViewBag.Message = "Uspešno ste postavili materijal!";
                 return View();
             }
