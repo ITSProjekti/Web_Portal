@@ -228,6 +228,10 @@
     <Compile Include="Migrations\201706020835092_VracanjeNaPET.Designer.cs">
       <DependentUpon>201706020835092_VracanjeNaPET.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706060957237_promenaModelaMaterijal.cs" />
+    <Compile Include="Migrations\201706060957237_promenaModelaMaterijal.Designer.cs">
+      <DependentUpon>201706060957237_promenaModelaMaterijal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -338,6 +342,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706020835092_VracanjeNaPET.resx">
       <DependentUpon>201706020835092_VracanjeNaPET.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706060957237_promenaModelaMaterijal.resx">
+      <DependentUpon>201706060957237_promenaModelaMaterijal.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
