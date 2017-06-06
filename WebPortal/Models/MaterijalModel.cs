@@ -5,6 +5,8 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.IO;
+using System.ComponentModel;
+using System.Web.Mvc;
 
 namespace WebPortal.Models
 {
@@ -12,13 +14,29 @@ namespace WebPortal.Models
     {
 
         [Key]
-       public int materijalId { get; set; }
-        //[Required]
-        //public byte[] materijalFile { get; set; }
-        public string materijalUrl { get; set; }
-       
-        public string materijalTip { get; set; }
-        
+        public int materijalId { get; set; }
+
+        [DisplayName("Materijal")]
+        [MaxLength]
+        public byte[] materijalFile { get; set; }
+
+        [HiddenInput(DisplayValue = false)]
+        public string fileMimeType { get; set; }
+
+        //[DataType(DataType.MultilineText)]
+        //public string opisMaterijal { get; set; }
+
+        //[DataType(DataType.DateTime)]
+        //[DisplayName("Created Date")]
+        //[DisplayFormat(DataFormatString = "{0:dd/MM/yy}", ApplyFormatInEditMode = true)]
+        //public DateTime CreatedDate { get; set; }
+
+
+        //public string UserName { get; set; }
+
+
+        public string materijalEkstenzija { get; set; }
+
         public string materijalNaziv { get; set; }
 
     }

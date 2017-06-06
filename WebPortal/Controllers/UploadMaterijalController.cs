@@ -12,101 +12,96 @@ namespace WebPortal.Content.uploads
 {
     public class UploadMaterijalController : Controller
     {
-        private ApplicationDbContext _context;
+
+
+        private IMaterijalContext context;
 
         public UploadMaterijalController()
         {
-            _context = new ApplicationDbContext();
+            context = new MaterijalContext();
         }
 
-        protected override void Dispose(bool disposing)
+        public UploadMaterijalController(IMaterijalContext Context)
         {
-            _context.Dispose();
+            context = Context;
         }
+
+
 
         [HttpGet]
-        public ActionResult Download(int id)
+        public ActionResult MaterijaliPrikaz(int number = 0)
         {
-            var file = _context.Materijal.SingleOrDefault(c => c.materijalId == id);
-            var cd = new System.Net.Mime.ContentDisposition
+            List<MaterijalModel> materijali;
+            materijali = context.materijali.ToList();
+            if (number == 0)
             {
-                FileName = file.materijalNaziv,
-                Inline = false,
-
-            };
-
-            Response.AppendHeader("Content-Disposition", cd.ToString());
-            return File(file.materijalNaziv, file.materijalTip);
-        }
-        
-        [HttpGet]
-        public ActionResult MaterijaliPrikaz()
-        {
-            var materijali = _context.Materijal.ToList();
-            MaterijalViewModel ViewModel = new MaterijalViewModel
+                materijali = context.materijali.ToList();
+            }
+            else
             {
-                materijaliLista = materijali
-            };
+                materijali = (from p in context.materijali
+                              select p).Take(number).ToList();
+            }
 
-            return View(ViewModel);
+            return View("MaterijaliPrikaz", materijali);
+
         }
 
 
         [HttpGet]
         public ActionResult UploadMaterijal()
         {
-            //var materijali = _context.Materijal.ToList();
+
 
             return View();
         }
 
         [HttpPost]
-        public ActionResult UploadMaterijal(HttpPostedFileBase file)
+        public ActionResult UploadMaterijal(MaterijalModel materijal, HttpPostedFileBase file)
         {
-            try
+
+            if (ModelState.IsValid)
             {
-                if (file.ContentLength > 0)
+                if (file != null)
                 {
-                    MaterijalModel materijal = new MaterijalModel();
+
+
                     string nazivFajla = Path.GetFileName(file.FileName);
-                    string putanjaFajla = Path.Combine(Server.MapPath("~/Content/uploads"), nazivFajla);
-                    file.SaveAs(putanjaFajla);
+
+                    materijal.fileMimeType = file.ContentType;
+                    materijal.materijalFile = new byte[file.ContentLength];
+                    file.InputStream.Read(materijal.materijalFile, 0, file.ContentLength);
                     materijal.materijalNaziv = nazivFajla;
-                    materijal.materijalTip = Path.GetExtension(putanjaFajla);
-                    materijal.materijalUrl = putanjaFajla;
-                    _context.Materijal.Add(materijal);
-                    _context.SaveChanges();
+                    materijal.materijalEkstenzija = Path.GetExtension(nazivFajla);
+
                 }
+
                 ViewBag.Message = "Uspešno ste postavili materijal!";
+                context.Add<MaterijalModel>(materijal);
+                context.SaveChanges();
                 return View();
             }
-            catch
+            else
             {
                 ViewBag.Message = "Postavljanje materijala nije uspelo!";
                 return View();
             }
         }
 
-        //[HttpPost]
-        //public ActionResult UploadMaterijal([Bind(Include = "Title, File")] MaterijalViewModel fileModel)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var fileData = new MemoryStream();
-        //        fileModel.File.InputStream.CopyTo(fileData);
+        public FileContentResult DownloadMaterijal(int id)
+        {
+            MaterijalModel materijal = context.pronadjiMaterijalPoId(id);
+            if (materijal != null)
+            {
+                return File(materijal.materijalFile, materijal.fileMimeType, materijal.materijalNaziv);
+            }
+            else
+            {
+                return null;
+            }
+        }
 
-        //        string nazivFajla = Path.GetFileName(fileModel.File.FileName);
-        //        string tipFajla = Path.GetExtension(fileModel.File.FileName);
 
-        //        var file = new MaterijalModel { materijalNaziv = nazivFajla, materijalTip = tipFajla, materijalFile = fileData.ToArray() };
-        //        _context.Materijal.Add(file);
-
-        //        _context.SaveChanges();
-
-        //        return RedirectToAction("UploadMaterijal");
-        //    }
-        //    return View(fileModel);
-        //}
 
     }
 }

@@ -1,14 +1,20 @@
-﻿@model WebPortal.ViewModels.MaterijalViewModel
+﻿@model IEnumerable<WebPortal.Models.MaterijalModel>
 @{
-    ViewBag.Title = "MaterijaliPrikaz";
+    ViewBag.Title = "Materijali Prikaz";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Materijali:</h2>
 
-<ul>
-    @foreach (var materijal in Model.materijaliLista)
+
+    @foreach (var materijal in Model)
             {
-        <li><a href="@materijal.materijalUrl">@materijal.materijalNaziv</a></li>
+        <div>
+            <h3>"@materijal.materijalNaziv"</h3>
+            @if (materijal.materijalFile != null)
+            {
+                <a href="@Url.Action("DownloadMaterijal", "UploadMaterijal", new { id = materijal.materijalId })">@materijal.materijalNaziv</a>
             }
-</ul>
+        </div>
+    }
+
