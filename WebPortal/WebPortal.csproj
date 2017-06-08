@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
@@ -239,11 +239,6 @@
     <Compile Include="Migrations\201706020835092_VracanjeNaPET.Designer.cs">
       <DependentUpon>201706020835092_VracanjeNaPET.cs</DependentUpon>
     </Compile>
-<<<<<<< HEAD
-    <Compile Include="Migrations\201706060957237_promenaModelaMaterijal.cs" />
-    <Compile Include="Migrations\201706060957237_promenaModelaMaterijal.Designer.cs">
-      <DependentUpon>201706060957237_promenaModelaMaterijal.cs</DependentUpon>
-=======
     <Compile Include="Migrations\201706061100197_promenaMaterijalModel.cs" />
     <Compile Include="Migrations\201706061100197_promenaMaterijalModel.Designer.cs">
       <DependentUpon>201706061100197_promenaMaterijalModel.cs</DependentUpon>
@@ -259,7 +254,6 @@
     <Compile Include="Migrations\201706061253471_revert.cs" />
     <Compile Include="Migrations\201706061253471_revert.Designer.cs">
       <DependentUpon>201706061253471_revert.cs</DependentUpon>
->>>>>>> DownloadSQLFS
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -355,7 +349,6 @@
     <Content Include="Views\Shared\DisplayTemplates\MetaRobotsHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
-    <Content Include="Views\UploadMaterijal\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -388,10 +381,6 @@
     <EmbeddedResource Include="Migrations\201706020835092_VracanjeNaPET.resx">
       <DependentUpon>201706020835092_VracanjeNaPET.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< HEAD
-    <EmbeddedResource Include="Migrations\201706060957237_promenaModelaMaterijal.resx">
-      <DependentUpon>201706060957237_promenaModelaMaterijal.cs</DependentUpon>
-=======
     <EmbeddedResource Include="Migrations\201706061100197_promenaMaterijalModel.resx">
       <DependentUpon>201706061100197_promenaMaterijalModel.cs</DependentUpon>
     </EmbeddedResource>
@@ -403,7 +392,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706061253471_revert.resx">
       <DependentUpon>201706061253471_revert.cs</DependentUpon>
->>>>>>> DownloadSQLFS
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
