@@ -8,20 +8,19 @@
 
 <style>
     .file {
-  visibility: hidden;
-  position: absolute;
-}
-
+        visibility: hidden;
+        position: absolute;
+    }
 </style>
 
 @using (Html.BeginForm("UploadMaterijal", "UploadMaterijal", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 
-    
-        
-        @Html.TextBox("file", "", new { type = "file" }) <br />
-        
-        <input type="submit" value="Postavi materijal" />
+
+
+    @Html.TextBox("file", "", new { type = "file" }) <br />
+
+    <input type="submit" value="Postavi materijal" />
         @ViewBag.Message
         <br />
 
@@ -40,5 +39,5 @@
             $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
         });
     });
-    
+
 </script>

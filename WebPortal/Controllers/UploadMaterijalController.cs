@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -100,6 +102,27 @@ namespace WebPortal.Content.uploads
                 return null;
             }
         }
+
+        public ActionResult Delete(int id)
+        {
+            MaterijalModel materijal = context.pronadjiMaterijalPoId(id);
+            if (materijal == null)
+            {
+                return HttpNotFound();
+            }
+            return View("Delete", materijal);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            MaterijalModel materijal = context.pronadjiMaterijalPoId(id);
+            context.Delete<MaterijalModel>(materijal);
+            context.SaveChanges();
+            return RedirectToAction("MaterijaliPrikaz");
+        }
+
 
 
 
