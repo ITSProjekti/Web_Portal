@@ -1,4 +1,4 @@
-﻿@model WebPortal.ViewModels.MaterijalViewModel
+﻿@model WebPortal.Models.MaterijalModel
 @{
     //ViewBag.Title = "UploadMaterijal";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -28,7 +28,7 @@
 
 }
 <br />
-@Html.ActionLink("Vidi sve materijale-->", "Downloads", "Download")
+@Html.ActionLink("Vidi sve materijale-->", "MaterijaliPrikaz", "UploadMaterijal")
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 <script>
     $(document).ready(function () {
@@ -40,11 +40,5 @@
             $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
         });
     });
-    //$(document).on('click', '.browse', function () {
-    //    var file = $(this).parent().parent().parent().find('.file');
-    //    file.trigger('click');
-    //});
-    //$(document).on('change', '.file', function () {
-    //    $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
-    //});
+    
 </script>

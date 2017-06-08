@@ -260,6 +260,19 @@ C:\Users\Student\Desktop\New folder\Projekat\WebPortal\obj\Debug\WebPortal.cspro
 C:\Users\Student\Desktop\New folder\Projekat\WebPortal\obj\Debug\WebPortal.dll
 C:\Users\Student\Desktop\New folder\Projekat\WebPortal\obj\Debug\WebPortal.pdb
 C:\Users\Student\Desktop\New folder\Projekat\WebPortal\obj\Debug\WebPortal.Migrations.VracanjeNaPET.resources
+<<<<<<< HEAD
+=======
+C:\Users\Student\Desktop\WebPortal\WebPortal\obj\Debug\WebPortal.csprojResolveAssemblyReference.cache
+C:\Users\Student\Desktop\WebPortal\WebPortal\obj\Debug\WebPortal.Migrations.InitialMigration.resources
+C:\Users\Student\Desktop\WebPortal\WebPortal\obj\Debug\WebPortal.Migrations.MaterijalModelMigration.resources
+C:\Users\Student\Desktop\WebPortal\WebPortal\obj\Debug\WebPortal.Migrations.PromenaMaterijalModela.resources
+C:\Users\Student\Desktop\WebPortal\WebPortal\obj\Debug\WebPortal.Migrations.PromenaMaterijalModelaPart2.resources
+C:\Users\Student\Desktop\WebPortal\WebPortal\obj\Debug\WebPortal.Migrations.MaterijalPromenaPart3.resources
+C:\Users\Student\Desktop\WebPortal\WebPortal\obj\Debug\WebPortal.Migrations.VracanjeNaPET.resources
+C:\Users\Student\Desktop\WebPortal\WebPortal\obj\Debug\WebPortal.csproj.GenerateResource.Cache
+C:\Users\Student\Desktop\WebPortal\WebPortal\obj\Debug\WebPortal.dll
+C:\Users\Student\Desktop\WebPortal\WebPortal\obj\Debug\WebPortal.pdb
+>>>>>>> DownloadSQLFS
 C:\Users\Student\Desktop\WebPortal\WebPortal\bin\ApplicationInsights.config
 C:\Users\Student\Desktop\WebPortal\WebPortal\bin\roslyn\csc.exe
 C:\Users\Student\Desktop\WebPortal\WebPortal\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -300,6 +313,11 @@ C:\Users\Student\Desktop\WebPortal\WebPortal\bin\Microsoft.Owin.Security.Microso
 C:\Users\Student\Desktop\WebPortal\WebPortal\bin\Microsoft.Owin.Security.OAuth.dll
 C:\Users\Student\Desktop\WebPortal\WebPortal\bin\Microsoft.Owin.Security.Twitter.dll
 C:\Users\Student\Desktop\WebPortal\WebPortal\bin\Microsoft.Web.Infrastructure.dll
+<<<<<<< HEAD
+=======
+C:\Users\Student\Desktop\WebPortal\WebPortal\bin\MvcSiteMapProvider.dll
+C:\Users\Student\Desktop\WebPortal\WebPortal\bin\MvcSiteMapProvider.WebActivator.dll
+>>>>>>> DownloadSQLFS
 C:\Users\Student\Desktop\WebPortal\WebPortal\bin\Newtonsoft.Json.dll
 C:\Users\Student\Desktop\WebPortal\WebPortal\bin\Owin.dll
 C:\Users\Student\Desktop\WebPortal\WebPortal\bin\System.Web.Helpers.dll
@@ -309,6 +327,10 @@ C:\Users\Student\Desktop\WebPortal\WebPortal\bin\System.Web.Razor.dll
 C:\Users\Student\Desktop\WebPortal\WebPortal\bin\System.Web.WebPages.Deployment.dll
 C:\Users\Student\Desktop\WebPortal\WebPortal\bin\System.Web.WebPages.dll
 C:\Users\Student\Desktop\WebPortal\WebPortal\bin\System.Web.WebPages.Razor.dll
+<<<<<<< HEAD
+=======
+C:\Users\Student\Desktop\WebPortal\WebPortal\bin\WebActivatorEx.dll
+>>>>>>> DownloadSQLFS
 C:\Users\Student\Desktop\WebPortal\WebPortal\bin\WebGrease.dll
 C:\Users\Student\Desktop\WebPortal\WebPortal\bin\Microsoft.AI.DependencyCollector.xml
 C:\Users\Student\Desktop\WebPortal\WebPortal\bin\Microsoft.AI.ServerTelemetryChannel.xml
@@ -316,6 +338,11 @@ C:\Users\Student\Desktop\WebPortal\WebPortal\bin\Microsoft.AI.Web.xml
 C:\Users\Student\Desktop\WebPortal\WebPortal\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\Student\Desktop\WebPortal\WebPortal\bin\Microsoft.ApplicationInsights.xml
 C:\Users\Student\Desktop\WebPortal\WebPortal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+<<<<<<< HEAD
+=======
+C:\Users\Student\Desktop\WebPortal\WebPortal\bin\MvcSiteMapProvider.xml
+C:\Users\Student\Desktop\WebPortal\WebPortal\bin\MvcSiteMapProvider.WebActivator.xml
+>>>>>>> DownloadSQLFS
 C:\Users\Student\Desktop\WebPortal\WebPortal\bin\System.Web.Helpers.xml
 C:\Users\Student\Desktop\WebPortal\WebPortal\bin\System.Web.Mvc.xml
 C:\Users\Student\Desktop\WebPortal\WebPortal\bin\System.Web.Optimization.xml
@@ -339,6 +366,7 @@ C:\Users\Student\Desktop\WebPortal\WebPortal\bin\Microsoft.Owin.Security.OAuth.x
 C:\Users\Student\Desktop\WebPortal\WebPortal\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Student\Desktop\WebPortal\WebPortal\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Student\Desktop\WebPortal\WebPortal\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+<<<<<<< HEAD
 C:\Users\Student\Desktop\WebPortal\WebPortal\obj\Debug\WebPortal.csprojResolveAssemblyReference.cache
 C:\Users\Student\Desktop\WebPortal\WebPortal\obj\Debug\WebPortal.Migrations.InitialMigration.resources
 C:\Users\Student\Desktop\WebPortal\WebPortal\obj\Debug\WebPortal.Migrations.MaterijalModelMigration.resources
@@ -350,3 +378,9 @@ C:\Users\Student\Desktop\WebPortal\WebPortal\obj\Debug\WebPortal.csproj.Generate
 C:\Users\Student\Desktop\WebPortal\WebPortal\obj\Debug\WebPortal.dll
 C:\Users\Student\Desktop\WebPortal\WebPortal\obj\Debug\WebPortal.pdb
 C:\Users\Student\Desktop\WebPortal\WebPortal\obj\Debug\WebPortal.Migrations.promenaModelaMaterijal.resources
+=======
+C:\Users\Student\Desktop\WebPortal\WebPortal\obj\Debug\WebPortal.Migrations.promenaMaterijalModel.resources
+C:\Users\Student\Desktop\WebPortal\WebPortal\obj\Debug\WebPortal.Migrations.IskomentarisanOpisMaterijala.resources
+C:\Users\Student\Desktop\WebPortal\WebPortal\obj\Debug\WebPortal.Migrations.IzbrisanDBSetIzIdentity.resources
+C:\Users\Student\Desktop\WebPortal\WebPortal\obj\Debug\WebPortal.Migrations.revert.resources
+>>>>>>> DownloadSQLFS

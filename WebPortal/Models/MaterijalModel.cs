@@ -23,8 +23,13 @@ namespace WebPortal.Models
         [HiddenInput(DisplayValue = false)]
         public string fileMimeType { get; set; }
 
+<<<<<<< HEAD
         [DataType(DataType.MultilineText)]
         public string opisMaterijal { get; set; }
+=======
+        //[DataType(DataType.MultilineText)]
+        //public string opisMaterijal { get; set; }
+>>>>>>> DownloadSQLFS
 
         //[DataType(DataType.DateTime)]
         //[DisplayName("Created Date")]

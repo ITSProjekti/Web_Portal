@@ -12,18 +12,21 @@ namespace WebPortal.Content.uploads
 {
     public class UploadMaterijalController : Controller
     {
-        private ApplicationDbContext _context;
+
+
+        private IMaterijalContext context;
 
         public UploadMaterijalController()
         {
-            _context = new ApplicationDbContext();
+            context = new MaterijalContext();
         }
 
-        protected override void Dispose(bool disposing)
+        public UploadMaterijalController(IMaterijalContext Context)
         {
-            _context.Dispose();
+            context = Context;
         }
 
+<<<<<<< HEAD
         //[HttpGet]
         //public ActionResult Download(int id)
         //{
@@ -50,13 +53,38 @@ namespace WebPortal.Content.uploads
 
         //    return View(ViewModel);
         //}
+=======
+
+
+        [HttpGet]
+        public ActionResult MaterijaliPrikaz(int number = 0)
+        {
+            List<MaterijalModel> materijali;
+            materijali = context.materijali.ToList();
+            if (number == 0)
+            {
+                materijali = context.materijali.ToList();
+            }
+            else
+            {
+                materijali = (from p in context.materijali
+                              select p).Take(number).ToList();
+            }
+
+            return View("MaterijaliPrikaz", materijali);
+
+        }
+>>>>>>> DownloadSQLFS
 
 
         [HttpGet]
         public ActionResult UploadMaterijal()
         {
 
+<<<<<<< HEAD
             //var materijali = _context.Materijal.ToList();
+=======
+>>>>>>> DownloadSQLFS
 
             return View();
         }
@@ -64,11 +92,19 @@ namespace WebPortal.Content.uploads
         [HttpPost]
         public ActionResult UploadMaterijal(MaterijalModel materijal, HttpPostedFileBase file)
         {
-            try
+
+            if (ModelState.IsValid)
             {
+<<<<<<< HEAD
                 if (ModelState.IsValid)
                 {
 
+=======
+                if (file != null)
+                {
+
+
+>>>>>>> DownloadSQLFS
                     string nazivFajla = Path.GetFileName(file.FileName);
 
                     materijal.fileMimeType = file.ContentType;
@@ -77,40 +113,39 @@ namespace WebPortal.Content.uploads
                     materijal.materijalNaziv = nazivFajla;
                     materijal.materijalEkstenzija = Path.GetExtension(nazivFajla);
 
+<<<<<<< HEAD
                     _context.Materijal.Add(materijal);
                     _context.SaveChanges();
+=======
+>>>>>>> DownloadSQLFS
                 }
 
                 ViewBag.Message = "Uspešno ste postavili materijal!";
+                context.Add<MaterijalModel>(materijal);
+                context.SaveChanges();
                 return View();
             }
-            catch
+            else
             {
                 ViewBag.Message = "Postavljanje materijala nije uspelo!";
                 return View();
             }
         }
 
-        //[HttpPost]
-        //public ActionResult UploadMaterijal([Bind(Include = "Title, File")] MaterijalViewModel fileModel)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var fileData = new MemoryStream();
-        //        fileModel.File.InputStream.CopyTo(fileData);
+        public FileContentResult DownloadMaterijal(int id)
+        {
+            MaterijalModel materijal = context.pronadjiMaterijalPoId(id);
+            if (materijal != null)
+            {
+                return File(materijal.materijalFile, materijal.fileMimeType, materijal.materijalNaziv);
+            }
+            else
+            {
+                return null;
+            }
+        }
 
-        //        string nazivFajla = Path.GetFileName(fileModel.File.FileName);
-        //        string tipFajla = Path.GetExtension(fileModel.File.FileName);
 
-        //        var file = new MaterijalModel { materijalNaziv = nazivFajla, materijalTip = tipFajla, materijalFile = fileData.ToArray() };
-        //        _context.Materijal.Add(file);
-
-        //        _context.SaveChanges();
-
-        //        return RedirectToAction("UploadMaterijal");
-        //    }
-        //    return View(fileModel);
-        //}
 
     }
 }

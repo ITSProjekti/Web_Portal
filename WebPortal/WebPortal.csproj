@@ -77,6 +77,14 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MvcSiteMapProvider, Version=4.6.22.0, Culture=neutral, PublicKeyToken=1923abe4657913cc, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcSiteMapProvider.MVC5.Core.4.6.22\lib\net45\MvcSiteMapProvider.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MvcSiteMapProvider.WebActivator, Version=4.6.22.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcSiteMapProvider.MVC5.4.6.22\lib\net45\MvcSiteMapProvider.WebActivator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -129,6 +137,10 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0.1\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -196,7 +208,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\DownloadController.cs" />
-    <Compile Include="Controllers\MaterijalModelsController.cs" />
     <Compile Include="Controllers\UploadMaterijalController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -228,17 +239,39 @@
     <Compile Include="Migrations\201706020835092_VracanjeNaPET.Designer.cs">
       <DependentUpon>201706020835092_VracanjeNaPET.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Migrations\201706060957237_promenaModelaMaterijal.cs" />
     <Compile Include="Migrations\201706060957237_promenaModelaMaterijal.Designer.cs">
       <DependentUpon>201706060957237_promenaModelaMaterijal.cs</DependentUpon>
+=======
+    <Compile Include="Migrations\201706061100197_promenaMaterijalModel.cs" />
+    <Compile Include="Migrations\201706061100197_promenaMaterijalModel.Designer.cs">
+      <DependentUpon>201706061100197_promenaMaterijalModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706061231329_IskomentarisanOpisMaterijala.cs" />
+    <Compile Include="Migrations\201706061231329_IskomentarisanOpisMaterijala.Designer.cs">
+      <DependentUpon>201706061231329_IskomentarisanOpisMaterijala.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706061243494_IzbrisanDBSetIzIdentity.cs" />
+    <Compile Include="Migrations\201706061243494_IzbrisanDBSetIzIdentity.Designer.cs">
+      <DependentUpon>201706061243494_IzbrisanDBSetIzIdentity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706061253471_revert.cs" />
+    <Compile Include="Migrations\201706061253471_revert.Designer.cs">
+      <DependentUpon>201706061253471_revert.cs</DependentUpon>
+>>>>>>> DownloadSQLFS
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MaterijalContext.cs" />
+    <Compile Include="Models\MaterijalDynamicNodeProvider.cs" />
     <Compile Include="Models\MaterijalModel.cs" />
+    <Compile Include="Models\MaterijalSharingInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Models\IMaterijalContext.cs" />
     <Compile Include="ViewModels\MaterijalViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -256,6 +289,10 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Mvc.sitemap" />
+    <None Include="MvcSiteMapSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -310,7 +347,14 @@
     <Content Include="Views\MaterijalModels\Details.cshtml" />
     <Content Include="Views\MaterijalModels\Edit.cshtml" />
     <Content Include="Views\MaterijalModels\Index.cshtml" />
-    <Content Include="Views\Download\Downloads.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MetaRobotsHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -343,8 +387,22 @@
     <EmbeddedResource Include="Migrations\201706020835092_VracanjeNaPET.resx">
       <DependentUpon>201706020835092_VracanjeNaPET.cs</DependentUpon>
     </EmbeddedResource>
+<<<<<<< HEAD
     <EmbeddedResource Include="Migrations\201706060957237_promenaModelaMaterijal.resx">
       <DependentUpon>201706060957237_promenaModelaMaterijal.cs</DependentUpon>
+=======
+    <EmbeddedResource Include="Migrations\201706061100197_promenaMaterijalModel.resx">
+      <DependentUpon>201706061100197_promenaMaterijalModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706061231329_IskomentarisanOpisMaterijala.resx">
+      <DependentUpon>201706061231329_IskomentarisanOpisMaterijala.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706061243494_IzbrisanDBSetIzIdentity.resx">
+      <DependentUpon>201706061243494_IzbrisanDBSetIzIdentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706061253471_revert.resx">
+      <DependentUpon>201706061253471_revert.cs</DependentUpon>
+>>>>>>> DownloadSQLFS
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
