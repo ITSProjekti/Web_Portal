@@ -129,6 +129,7 @@ namespace WebPortal.Content.uploads
                 return View();
             }
         }
+        }
 
         public FileContentResult DownloadMaterijal(int id)
         {
