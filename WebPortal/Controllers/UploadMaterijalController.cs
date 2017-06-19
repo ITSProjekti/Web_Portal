@@ -28,7 +28,7 @@ namespace WebPortal.Content.uploads
             context = Context;
         }
 
-<<<<<<< HEAD
+
         //[HttpGet]
         //public ActionResult Download(int id)
         //{
@@ -55,7 +55,7 @@ namespace WebPortal.Content.uploads
 
         //    return View(ViewModel);
         //}
-=======
+
 
 
         [HttpGet]
@@ -76,17 +76,16 @@ namespace WebPortal.Content.uploads
             return View("MaterijaliPrikaz", materijali);
 
         }
->>>>>>> DownloadSQLFS
+
 
 
         [HttpGet]
         public ActionResult UploadMaterijal()
         {
 
-<<<<<<< HEAD
+
             //var materijali = _context.Materijal.ToList();
-=======
->>>>>>> DownloadSQLFS
+
 
             return View();
         }
@@ -97,16 +96,14 @@ namespace WebPortal.Content.uploads
 
             if (ModelState.IsValid)
             {
-<<<<<<< HEAD
+
                 if (ModelState.IsValid)
                 {
 
-=======
                 if (file != null)
                 {
 
 
->>>>>>> DownloadSQLFS
                     string nazivFajla = Path.GetFileName(file.FileName);
 
                     materijal.fileMimeType = file.ContentType;
@@ -115,11 +112,10 @@ namespace WebPortal.Content.uploads
                     materijal.materijalNaziv = nazivFajla;
                     materijal.materijalEkstenzija = Path.GetExtension(nazivFajla);
 
-<<<<<<< HEAD
+
                     _context.Materijal.Add(materijal);
                     _context.SaveChanges();
-=======
->>>>>>> DownloadSQLFS
+
                 }
 
                 ViewBag.Message = "Uspešno ste postavili materijal!";
